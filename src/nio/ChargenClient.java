@@ -9,16 +9,16 @@ import java.nio.channels.SocketChannel;
 import java.nio.channels.WritableByteChannel;
 
 public class ChargenClient {
-    private static int DEFUALT_PORT =   19 ;
+    private static int DEFUALT_PORT =   19;
     public static void main(String args[]){
-        int port = 45678;
+        int port =34567;
         try{
-            SocketAddress address = new InetSocketAddress("www.baidu.com",port);
+            SocketAddress address = new InetSocketAddress("localhost",port);
             SocketChannel client = SocketChannel.open( address ) ;
             ByteBuffer buffer = ByteBuffer.allocate(74);
             WritableByteChannel out = Channels.newChannel(System.out);
             client.configureBlocking(false);
-            while ( client.read(buffer)!=-1){
+            while ( (client.read(buffer))!=-1){
                 buffer.flip();
                 out.write(buffer);
                 buffer.clear();
